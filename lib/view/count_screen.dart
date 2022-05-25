@@ -41,7 +41,7 @@ class _CountScreenState extends State<CountScreen> {
           });
           showMessage();
         },
-        child: const Icon(Icons.access_alarm),
+        child: const Icon(Icons.add),
       ),
     );
   }
