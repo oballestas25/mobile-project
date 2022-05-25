@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ChangeColor extends StatefulWidget {
@@ -9,7 +11,9 @@ class ChangeColor extends StatefulWidget {
 
 class _ChangeColorState extends State<ChangeColor> {
   int _counter = 0;
+  int colorIndex = 0;
   Color textColor = Colors.blue;
+  Color buttonColor = Colors.black;
   List myColors = [
     Colors.blue,
     Colors.red,
@@ -17,16 +21,20 @@ class _ChangeColorState extends State<ChangeColor> {
     Colors.black,
     Colors.orange
   ];
-  int colorIndex = 0;
+
+  void changeColor() {
+    colorIndex++;
+    if (colorIndex == myColors.length) {
+      colorIndex = 0;
+    }
+    textColor = myColors[colorIndex];
+    buttonColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+  }
 
   void _incrementCounter() {
     setState(() {
       _counter++;
-      colorIndex++;
-      if (colorIndex == myColors.length) {
-        colorIndex = 0;
-      }
-      textColor = myColors[colorIndex];
+      changeColor();
     });
   }
 
@@ -34,6 +42,14 @@ class _ChangeColorState extends State<ChangeColor> {
     setState(() {
       _counter = 0;
       textColor = Colors.blue;
+      buttonColor = Colors.black;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+      changeColor();
     });
   }
 
@@ -88,13 +104,24 @@ class _ChangeColorState extends State<ChangeColor> {
       floatingActionButton: Stack(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(bottom: 85),
+            padding: const EdgeInsets.only(bottom: 145),
             child: Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
                 onPressed: _incrementCounter,
-                backgroundColor: textColor,
+                backgroundColor: buttonColor,
                 child: const Icon(Icons.add),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                onPressed: _decrementCounter,
+                backgroundColor: buttonColor,
+                child: const Icon(Icons.remove),
               ),
             ),
           ),
@@ -104,7 +131,7 @@ class _ChangeColorState extends State<ChangeColor> {
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
                 onPressed: _restartCounter,
-                backgroundColor: textColor,
+                backgroundColor: buttonColor,
                 child: const Icon(Icons.restart_alt),
               ),
             ),
