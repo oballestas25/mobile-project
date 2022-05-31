@@ -10,6 +10,24 @@ class CountScreen extends StatefulWidget {
 class _CountScreenState extends State<CountScreen> {
   int count = 0;
 
+  void incrementCounter() {
+    setState(() {
+      count++;
+    });
+  }
+
+  void decrementCounter() {
+    setState(() {
+      count--;
+    });
+  }
+
+  void restartCounter() {
+    setState(() {
+      count = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const sizeText = TextStyle(fontSize: 25);
@@ -34,19 +52,44 @@ class _CountScreenState extends State<CountScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            count++;
-          });
-          showMessage();
-        },
-        child: const Icon(Icons.add),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingCustomW(
+        increase: incrementCounter,
+        decrease: decrementCounter,
+        restart: restartCounter,
       ),
     );
   }
+}
 
-  void showMessage() {
-    print('Hi, again');
+class FloatingCustomW extends StatelessWidget {
+  final Function increase;
+  final Function decrease;
+  final Function restart;
+  const FloatingCustomW(
+      {Key? key,
+      required this.increase,
+      required this.decrease,
+      required this.restart})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        FloatingActionButton(
+          onPressed: () => increase(),
+          child: const Icon(Icons.add),
+        ),
+        FloatingActionButton(
+          onPressed: () => decrease(),
+          child: const Icon(Icons.remove),
+        ),
+        FloatingActionButton(
+          onPressed: () => restart(),
+          child: const Icon(Icons.restore),
+        ),
+      ],
+    );
   }
 }
