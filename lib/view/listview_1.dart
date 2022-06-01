@@ -50,7 +50,14 @@ class ListView1 extends StatelessWidget {
                 backgroundImage:
                     Image.network(guitarBrands[index]["image"]!).image,
               ),
-              title: Text(guitarBrands[index]["name"]!),
+              title: GestureDetector(
+                  onTap: () {
+                    var snackBar =
+                        SnackBar(content: Text(guitarBrands[index]["name"]!));
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  child: Text(guitarBrands[index]["name"]!)),
             );
           },
         ));
