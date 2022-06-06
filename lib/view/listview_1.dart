@@ -46,10 +46,22 @@ class ListView1 extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (_, index) {
             return ListTile(
-              leading: CircleAvatar(
+              leading: GestureDetector(
+                onTap: () {
+                    var snackBar = SnackBar(
+                        content: Image(
+                            image: Image.network(guitarBrands[index]["image"]!)
+                                .image));
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                child:CircleAvatar(
                 backgroundImage:
                     Image.network(guitarBrands[index]["image"]!).image,
               ),
+              )
+,
+
               title: GestureDetector(
                   onTap: () {
                     var snackBar = SnackBar(
