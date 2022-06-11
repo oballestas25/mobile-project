@@ -1,6 +1,6 @@
 
+import 'package:mobile_project/entities/carro.dart';
 import 'package:mobile_project/entities/servicio.dart';
-import 'carro.dart';
 
 class Registros {
   final Carro? carro;
