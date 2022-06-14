@@ -13,6 +13,11 @@ class Servicio{
     );
   }
 
+  @override
+  toString() {
+    return 'Servicio lavado: $lavado, polish: $polish, tapiceria: $tapiceria';
+  }
+
 /*   Map<String,dynamic> toJson(){
   final Map<String,dynamic> data= new Map<String,dynamic>();
   data['lavado']=this.lavado;

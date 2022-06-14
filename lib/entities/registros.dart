@@ -11,23 +11,24 @@ class Registros {
   final String? nombre;
   final String? image;
 
-
   Registros(
-    {this.carro, 
-    this.servicio, 
-    this.apellido, 
-    this.cel, 
-    this.licencia, 
-    this.nombre, 
-    this.image});
+      {this.carro,
+      this.servicio,
+      this.apellido,
+      this.cel,
+      this.licencia,
+      this.nombre,
+      this.image});
 
-
-factory Registros.fromJson(Map<String, dynamic> json) {
+  factory Registros.fromJson(Map<String, dynamic> json) {
     return Registros(
-      carro: json['carro'] != null ? Carro.fromJson(json['carro']) : null,
-      servicio: json['servicio'] != null 
-      ? Servicio.fromJson(json['servicio']) 
-      : null,
+      carro: json['Carro'] != null
+          ? Carro.fromJson(Map<String, dynamic>.from(json['Carro'] as Map))
+          : null,
+      servicio: json['Servicio'] != null
+          ? Servicio.fromJson(
+              Map<String, dynamic>.from(json['Servicio'] as Map))
+          : null,
       apellido: json['apellido'],
       cel: json['cel'],
       licencia: json['licencia'],
@@ -35,5 +36,4 @@ factory Registros.fromJson(Map<String, dynamic> json) {
       image: json['image'],
     );
   }
-
 }

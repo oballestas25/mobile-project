@@ -1,13 +1,18 @@
 import 'package:mobile_project/entities/registros.dart';
 
-class ResponseFirebase{
-
+class ResponseFirebase {
   List<Registros>? registros;
-  ResponseFirebase({this.registros});
 
-  ResponseFirebase.fromJson(List<dynamic>json){
-    registros= json.map((e) => Registros.fromJson(e)).toList();
+  ResponseFirebase({
+    this.registros,
+  });
+
+  ResponseFirebase.fromJson(List<dynamic> json) {
+    registros = json
+        .map((e) => Registros.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList();
   }
+}
 
 /*  ResponseFirebase.fromJson(Map<String,dynamic> json) {
 
@@ -22,4 +27,3 @@ class ResponseFirebase{
 
 
   
-}

@@ -15,6 +15,10 @@ class Carro{
     );
   }
 
+  @override
+  String toString() {
+    return 'Carro color: $color, marca: $marca, modelo: $modelo, placa: $placa';
+  }
 
 }
 

@@ -14,7 +14,8 @@ class FirebaseConnection {
   try{
     DatabaseReference registros = instanceFirebase();
     DataSnapshot response = await registros.get();
-    final registers= ResponseFirebase.fromJson(response.value as List);
+    final responseMap = Map<String, dynamic>.from(response.value as Map);
+    final registers = ResponseFirebase.fromJson(responseMap.values.toList());
     return registers;
   }
   catch(error){
