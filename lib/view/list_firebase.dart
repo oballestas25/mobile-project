@@ -49,7 +49,7 @@ class _ListFireBaseState extends State<ListFireBase> {
     });
   }
 
-  showAlert(BuildContext context,guitarBrands,index) {  
+  showAlert(BuildContext context,carsRgisters,index) {  
   
     Widget okButton = TextButton(  
       child: const Center (child: Text("OK")),  
@@ -61,7 +61,7 @@ class _ListFireBaseState extends State<ListFireBase> {
     
     AlertDialog alert = AlertDialog(  
       content: Column(children: [
-        Image(image: Image.network(guitarBrands[index].image!).image),
+        Image(image: Image.network(carsRgisters[index].image!).image),
         const Text("\nUsuario", style: TextStyle(fontWeight: FontWeight.bold)),
         Text("Nombre: ${registros[index].nombre} ${registros[index].apellido}"),
         Text("Celular: ${registros[index].cel}"),
