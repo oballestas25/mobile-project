@@ -16,16 +16,40 @@ class _ProfileState extends State<Profile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children:const[
-              CircleAvatar( 
-              backgroundImage: AssetImage('assets/images/oscar-ballestas.png'),radius: 130),
-              Text("\n Name: Óscar Ballestas",style: TextStyle(fontSize: 20),),
-              Text("Username: oballestas",style: TextStyle(fontSize: 20),),
-              Text("Cel: 3004796401",style: TextStyle(fontSize: 20),),
-              Text("Email: oballestas@lsv-tech.com",style: TextStyle(fontSize: 20),),
+            children: 
+             [
+              GestureDetector(child: CircleAvatar( 
+              backgroundImage: AssetImage('assets/images/oscar-ballestas.png'),radius: 130,),
+              onTap: (){
+                showAlert(context);
+              },
+              ),
+              
+              Text("\n Name: Óscar Ballestas",style: TextStyle(fontSize: 18),),
+              Text("Username: oballestas",style: TextStyle(fontSize: 18),),
+              Text("Cel: 3004796401",style: TextStyle(fontSize: 18),),
+              Text("Email: oballestas@lsv-tech.com",style: TextStyle(fontSize: 18),),
             ],),
         ),
       );
 
   }
 }
+
+showAlert(BuildContext context) {  
+    
+  const AlertDialog alert = AlertDialog(  
+    content:  Image( 
+      image: AssetImage('assets/images/oscar-ballestas.png'),
+      
+      )
+      ,
+  );  
+  
+  showDialog(  
+    context: context,  
+    builder: (BuildContext context) {  
+      return alert;  
+    },  
+  );  
+}  
