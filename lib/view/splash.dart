@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mobile_project/view/menu.dart';
 
 
 class Splash extends StatefulWidget {
@@ -10,6 +11,17 @@ class Splash extends StatefulWidget {
 }
 
 class Home extends State<Splash> {
+
+  @override
+  void initState() {
+    //set time to load the new page
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const Menu()));
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -17,6 +29,8 @@ class Home extends State<Splash> {
         body: Container(
           alignment: Alignment.center,
             child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 300,

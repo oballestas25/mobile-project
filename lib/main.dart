@@ -9,6 +9,7 @@ import 'package:mobile_project/view/home_view.dart';
 import 'package:mobile_project/view/change_color.dart';
 import 'package:mobile_project/view/list_firebase.dart';
 import 'package:mobile_project/view/listview_1.dart';
+import 'package:mobile_project/view/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(debugShowCheckedModeBanner: false, home: ListFireBase());
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: Splash());
   }
 }
 

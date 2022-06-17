@@ -17,9 +17,7 @@ class _ListFireBaseState extends State<ListFireBase> {
   Widget build(BuildContext context) {
     callDatabase();
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Cars Service"),
-        ),
+
         body: ListView.builder(
             itemCount: registros.length,
             itemBuilder: (context, index) {
@@ -33,7 +31,7 @@ class _ListFireBaseState extends State<ListFireBase> {
                     },
                 ), 
                 title: GestureDetector( child:Text(
-                    "${registros[index].nombre} ${registros[index].apellido}"),
+                    "Service ${index+1}"),
                     ),
                        onTap: () {
                       showAlert(context,registros,index); 
@@ -52,7 +50,7 @@ class _ListFireBaseState extends State<ListFireBase> {
   showAlert(BuildContext context,carsRgisters,index) {  
   
     Widget okButton = TextButton(  
-      child: const Center (child: Text("OK")),  
+      child: const Center (child: Text("Ok")),  
       onPressed: () {  
         Navigator.of(context).pop();  
 
