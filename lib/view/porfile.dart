@@ -8,33 +8,62 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  static const Color iconColor =  Color.fromARGB(255, 107, 169, 109);
+  static const iconsPadding = EdgeInsets.fromLTRB(30, 0, 0, 0);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: 
-             [
-              GestureDetector(child: CircleAvatar( 
-              backgroundImage: AssetImage('assets/images/oscar-ballestas.png'),radius: 130,),
+   return Column(
+        children: [
+          Padding(
+          padding: const EdgeInsets.all(30),
+          child:
+            GestureDetector(child: const CircleAvatar( 
+              backgroundImage: 
+                AssetImage('assets/images/oscar-ballestas.png'),radius: 130,),
               onTap: (){
                 showAlert(context);
               },
-              ),
-              
-              Text("\n Name: Óscar Ballestas",style: TextStyle(fontSize: 18),),
-              Text("Username: oballestas",style: TextStyle(fontSize: 18),),
-              Text("Cel: 3004796401",style: TextStyle(fontSize: 18),),
-              Text("Email: oballestas@lsv-tech.com",style: TextStyle(fontSize: 18),),
-            ],),
-        ),
-      );
+            )
+          ),
+          const ListTile(
+            contentPadding: iconsPadding,
+            title:  Text(
+              'Óscar Ballestas',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            subtitle:  Text('Developer'),
+            leading: Icon(
+              Icons.person,
+              color: iconColor,
+            ),
+          ),
 
-  }
-}
+          const ListTile(
+            contentPadding: iconsPadding,
+            title: Text(
+              '300-4796401',
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
+            leading: Icon(
+              Icons.contact_phone,
+              color: iconColor,
+            ),
+          ),
+
+          const ListTile(
+            contentPadding: iconsPadding,
+            title: Text('oballestas@lsv-tech.com'),
+            leading: Icon(
+              Icons.contact_mail,
+              color:iconColor,
+            ),
+          ),
+        ],
+      )
+    
+  ;
+}}
 
 showAlert(BuildContext context) {  
     
