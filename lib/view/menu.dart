@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/view/home_view.dart';
+import 'package:mobile_project/view/listview_2.dart';
 import 'package:mobile_project/view/porfile.dart';
 import 'list_firebase.dart';
 
@@ -16,11 +17,10 @@ class MenuS extends State<Menu> {
   int _selectedIndex=0;
   static const TextStyle optionStyle = TextStyle(fontSize: 24,fontWeight: FontWeight.bold);
 
-  static const List<Widget> _widgetOptions = <Widget>[
-
-    HomeView(),
-    ListFireBase(),
-    Profile(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomeView(),
+    ListView2(),
+    const Profile(),
   ];
 
   void _onItemTapped (int index){
