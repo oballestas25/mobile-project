@@ -14,8 +14,15 @@ class CardCustom extends StatelessWidget{
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
         child: SizedBox(
           width: 370,
-          height: 120,
-          child: Image( image: Image.network(guitarBrands[index]["image"]!).image),
+          height: 75,
+          child: ListTile(
+          contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
+          title: Text(guitarBrands[index]['name']),
+          leading: CircleAvatar(
+                backgroundImage:
+                    Image.network(guitarBrands[index]["image"]!).image,
+              ),
+        ),
         ),
       ),
     );
