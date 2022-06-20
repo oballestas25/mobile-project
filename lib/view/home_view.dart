@@ -10,7 +10,12 @@ class HomeView extends StatelessWidget {
           child: SizedBox(
                   height: 300,
                   width: 300,
-                  child: Lottie.asset('assets/animations/car-wash-home.json'),
+                  child: Column(
+                    children: [
+                      Lottie.asset('assets/animations/car-wash-home.json'),
+                      const Text("Home",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)
+                    ],
+                  ),
                  ),
         ));
   }
