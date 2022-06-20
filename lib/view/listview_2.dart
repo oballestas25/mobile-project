@@ -1,5 +1,27 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
+class CardCustom extends StatelessWidget{
+  List<Map<String, dynamic>> guitarBrands;
+  int index;
+  CardCustom(this.guitarBrands, this.index, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        elevation: 3,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: SizedBox(
+          width: 370,
+          height: 120,
+          child: Image( image: Image.network(guitarBrands[index]["image"]!).image),
+        ),
+      ),
+    );
+  } 
+  }
+
 class ListView2 extends StatelessWidget {
   ListView2({Key? key}) : super(key: key);
   final List<Map<String, dynamic>> guitarBrands = [
@@ -110,14 +132,7 @@ class ListView2 extends StatelessWidget {
                   },
                   child: Stack(
                     children: [
-                      Card(
-                        child: SizedBox(
-                          width: 370,
-                          height: 120,
-                          child: 
-                            Image(image: Image.network(guitarBrands[index]["image"]!).image)
-                          ),
-                        ),
+                     CardCustom(guitarBrands,index),
                     ])
                   ));
           }
