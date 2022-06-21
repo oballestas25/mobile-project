@@ -19,7 +19,7 @@ class MenuS extends State<Menu> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeView(),
-    ListView2(),
+    const ListFireBase(),
     const Profile(),
   ];
 

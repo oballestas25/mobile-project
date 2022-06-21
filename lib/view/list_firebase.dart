@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../domain/firebase_connection.dart';
 import '../entities/registros.dart';
+import 'detail_view.dart';
 
 class ListFireBase extends StatefulWidget {
   const ListFireBase({Key? key}) : super(key: key);
@@ -27,14 +28,20 @@ class _ListFireBaseState extends State<ListFireBase> {
                       backgroundImage: Image.network(registros[index].image!).image,
                   ),
                   onTap: () {
-                      showAlert(context,registros,index); 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DetailView(registros[index])),
+                          );
                     },
                 ), 
                 title: GestureDetector( child:Text(
                     "Service ${index+1}"),
                     ),
                        onTap: () {
-                      showAlert(context,registros,index); 
+                                                Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DetailView(registros[index])),
+                          );
                     },
               );
             }));
