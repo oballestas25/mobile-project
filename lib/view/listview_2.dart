@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detail_view.dart';
+
 // ignore: must_be_immutable
 class CardCustom extends StatelessWidget{
   List<Map<String, dynamic>> guitarBrands;
@@ -135,7 +137,10 @@ class ListView2 extends StatelessWidget {
 
               title: GestureDetector(
                   onTap: () {
-                     showAlert(context,guitarBrands,index);  
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DetailView(guitarBrands[index])),
+                          );
                   },
                   child: Stack(
                     children: [
