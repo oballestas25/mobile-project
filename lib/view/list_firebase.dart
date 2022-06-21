@@ -3,6 +3,34 @@ import '../domain/firebase_connection.dart';
 import '../entities/registros.dart';
 import 'detail_view.dart';
 
+class CardCustom extends StatelessWidget{
+  List<Registros> carsData= [];
+  int index;
+  CardCustom(this.carsData, this.index, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        elevation: 3,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: SizedBox(
+          width: 370,
+          height: 75,
+          child: ListTile(
+          contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
+          title: Text("Servicio ${index+1}"),
+          leading: CircleAvatar(
+                backgroundImage:
+                    Image.network(carsData[index].image!).image,
+              ),
+        ),
+        ),
+      ),
+    );
+  } 
+  }
+
 class ListFireBase extends StatefulWidget {
   const ListFireBase({Key? key}) : super(key: key);
 
@@ -18,33 +46,26 @@ class _ListFireBaseState extends State<ListFireBase> {
   Widget build(BuildContext context) {
     callDatabase();
     return Scaffold(
-
         body: ListView.builder(
-            itemCount: registros.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: GestureDetector( 
-                  child: CircleAvatar(
-                      backgroundImage: Image.network(registros[index].image!).image,
-                  ),
+          itemCount: registros.length,
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (_, index) {
+            return ListTile(
+
+              title: GestureDetector(
                   onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => DetailView(registros[index])),
-                          );
-                    },
-                ), 
-                title: GestureDetector( child:Text(
-                    "Service ${index+1}"),
-                    ),
-                       onTap: () {
-                                                Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => DetailView(registros[index])),
-                          );
-                    },
-              );
-            }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailView(registros[index])),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                     CardCustom(registros,index),
+                    ])
+                  ));
+          }
+        ));  
   }
 
   void callDatabase() async {
@@ -53,46 +74,7 @@ class _ListFireBaseState extends State<ListFireBase> {
       registros = respuesta.registros!;
     });
   }
-
-  showAlert(BuildContext context,carsRgisters,index) {  
-  
-    Widget okButton = TextButton(  
-      child: const Center (child: Text("Ok")),  
-      onPressed: () {  
-        Navigator.of(context).pop();  
-
-      },  
-    );  
-    
-    AlertDialog alert = AlertDialog(  
-      content: Column(children: [
-        Image(image: Image.network(carsRgisters[index].image!).image),
-        const Text("\nUsuario", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Nombre: ${registros[index].nombre} ${registros[index].apellido}"),
-        Text("Celular: ${registros[index].cel}"),
-        Text("Licencia: ${registros[index].licencia}"),
-        const Text("\nCarro", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Marca: ${registros[index].carro?.marca}"),
-        Text("Modelo: ${registros[index].carro?.modelo}"),
-        Text("Color: ${registros[index].carro?.color}"),
-        Text("Placa: ${registros[index].carro?.placa}"),
-        const Text("\nServicios", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Lavado: ${registros[index].servicio?.lavado}"),
-        Text("Pulido: ${registros[index].servicio?.polish}"),
-        Text("Tapicería: ${registros[index].servicio?.tapiceria}"),
-        ]),
-      actions: [  
-        okButton,  
-      ],  
-    );  
-    
-    showDialog(  
-      context: context,  
-      builder: (BuildContext context) {  
-        return alert;  
-      },  
-    );  
-}  
+ 
 
 }
 
