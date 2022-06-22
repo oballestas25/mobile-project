@@ -25,7 +25,7 @@ class Profiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar( 
-          title: const Text("Profiles"),
+          title: const Text("Perfiles"),
         backgroundColor: Colors.cyan,),
         body: ListView.builder(
           itemCount: profiles.length,

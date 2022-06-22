@@ -36,15 +36,15 @@ class MenuS extends State<Menu> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem (
             icon: Icon(Icons.home),
-            label: "Home"
+            label: "Inicio"
           ),
           BottomNavigationBarItem (
             icon: Icon(Icons.car_repair),
-            label: "Services"
+            label: "Servicios"
           ),
           BottomNavigationBarItem (
             icon: Icon(Icons.person),
-            label: "Profiles"
+            label: "Perfiles"
           ),
         ],
         currentIndex: _selectedIndex,

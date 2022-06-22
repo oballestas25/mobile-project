@@ -24,7 +24,7 @@ class _HomeView extends State<HomeView>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar( 
-        title: const Text("Car Wash - Home"),
+        title: const Text("Car Wash"),
         backgroundColor: Colors.cyan,),
       body: Column(
         children: [

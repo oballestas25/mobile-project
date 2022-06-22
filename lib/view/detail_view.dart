@@ -20,7 +20,7 @@ class _DetailViewState extends State<DetailView> {
     if (registros.isNotEmpty){
           return  Scaffold(
         appBar: AppBar(
-        title: Text("Service ${widget.index}"),
+        title: Text("Servicio ${widget.index}"),
         backgroundColor: Colors.cyan,
       ),
       
