@@ -19,6 +19,10 @@ class _DetailViewState extends State<DetailView> {
     callDatabase();
     if (registros.isNotEmpty){
           return  Scaffold(
+        appBar: AppBar(
+        title: Text("Service ${widget.index}"),
+        backgroundColor: Colors.cyan,
+      ),
       
       body: Center(
         child: Column(children: [

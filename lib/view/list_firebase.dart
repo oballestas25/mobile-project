@@ -19,7 +19,7 @@ class CardCustom extends StatelessWidget{
           height: 75,
           child: ListTile(
           contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
-          title: Text("Servicio ${index+1}"),
+          title: Text("${carsData[index].id}"),
           leading: CircleAvatar(
                 backgroundImage:
                     Image.network(carsData[index].image!).image,
@@ -48,12 +48,12 @@ class _ListFireBaseState extends State<ListFireBase> {
     callDatabase();
     return Scaffold(
         appBar: AppBar(
-        title: const Text("Car Wash"),
+        title: const Text("Services"),
         backgroundColor: Colors.cyan,
         actions: [
           IconButton(
             onPressed: (){
-              showSearch(context: context, delegate: MySearchDelegate());
+              showSearch(context: context, delegate: MySearchDelegate(registros));
             }, 
             icon: const Icon(Icons.search))
         ],
@@ -91,47 +91,47 @@ class _ListFireBaseState extends State<ListFireBase> {
 }
 
 class MySearchDelegate extends SearchDelegate {
+  List<Registros> searchResults;
+  MySearchDelegate(this.searchResults);
+  
+  @override 
+  Widget? buildLeading(BuildContext context) => IconButton(
+    icon:const Icon(Icons.arrow_back),
+    onPressed: () => close(context, null),
+  );
 
-    List<String> searchResults = [
-      'Servicio 1',
-      'Servicio 3',
-      'Servicio 4',
-      'Servicio 5',
-    ];
-
-
-    @override 
-    Widget? buildLeading(BuildContext context) => IconButton(
-      icon:const Icon(Icons.arrow_back),
-      onPressed: () => close(context, null),
-    );
-
-    @override 
-    List<Widget>? buildActions(BuildContext context) =>[
-        IconButton(
-        icon: const Icon(Icons.clear),
-        onPressed: (){
-          if (query.isEmpty){
-            close(context, null);
-          }else{
-            query='';
-          }
-        },
-      )
-    ];
+  @override 
+  List<Widget>? buildActions(BuildContext context) =>[
+      IconButton(
+      icon: const Icon(Icons.clear),
+      onPressed: (){
+        if (query.isEmpty){
+          close(context, null);
+        }else{
+          query='';
+        }
+      },
+    )
+  ];
 
 
   @override
   Widget buildResults(BuildContext context)=> Center(
     child: Text(
       query,
-      style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold),
+      style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
     ),
   );
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = searchResults.where((searchResult){
+    List<String> suggestionsList = [];
+
+    searchResults.forEach((element) { 
+      suggestionsList.add(element.id.toString());
+      });
+
+    List<String> suggestions = suggestionsList.where((searchResult){
       final result = searchResult.toLowerCase();
       final input = query.toLowerCase();
 
@@ -148,7 +148,10 @@ class MySearchDelegate extends SearchDelegate {
           onTap: (){
             query = suggestion;
 
-            showResults(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailView(suggestions[index])),
+            );
           },
         );
       },

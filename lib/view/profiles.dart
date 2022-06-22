@@ -24,6 +24,9 @@ class Profiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar( 
+          title: const Text("Profiles"),
+        backgroundColor: Colors.cyan,),
         body: ListView.builder(
           itemCount: profiles.length,
           physics: const BouncingScrollPhysics(),
