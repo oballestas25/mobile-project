@@ -17,7 +17,7 @@ class MenuS extends State<Menu> {
   int _selectedIndex=0;
   static const TextStyle optionStyle = TextStyle(fontSize: 24,fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    const HomeView(),
+    HomeView(),
     const ListFireBase(),
     Profiles(),
   ];
