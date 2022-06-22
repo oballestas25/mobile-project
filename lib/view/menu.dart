@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/view/home_view.dart';
-import 'package:mobile_project/view/listview_2.dart';
 import 'package:mobile_project/view/porfile.dart';
 import 'list_firebase.dart';
 

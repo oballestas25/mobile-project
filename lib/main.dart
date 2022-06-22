@@ -1,15 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_project/view/cellphone.dart';
-import 'package:mobile_project/view/change_color.dart';
-import 'package:mobile_project/view/count.dart';
-import 'package:mobile_project/view/count_screen.dart';
 import 'package:mobile_project/view/home_view.dart';
-import 'package:mobile_project/view/change_color.dart';
 import 'package:mobile_project/view/list_firebase.dart';
-import 'package:mobile_project/view/listview_1.dart';
-import 'package:mobile_project/view/listview_2.dart';
 import 'package:mobile_project/view/splash.dart';
 
 void main() async {
