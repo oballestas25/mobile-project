@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class HomeView extends StatefulWidget{
@@ -22,6 +23,9 @@ class _HomeView extends State<HomeView>{
   @override 
   Widget build(BuildContext context){
     return Scaffold(
+      appBar: AppBar( 
+        title: const Text("Car Wash - Home"),
+        backgroundColor: Colors.cyan,),
       body: Column(
         children: [
           Stack(
@@ -72,23 +76,30 @@ class _HomeView extends State<HomeView>{
 
   Widget buildCoverImage() => Column(
     children: [
-      const Text("Welcome to the Car Wash Services", style:TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 50, 137))),
-      Image.network(
-        "https://static.vecteezy.com/system/resources/previews/000/549/723/non_2x/abstract-blue-background-dark-curve-002-vector.jpg",
-        width: double.infinity,
-        height: coverHeight,
-        fit: BoxFit.cover,
+      Padding (
+        padding: const EdgeInsets.only(bottom:100),
+        child:Text("Welcome to the Car Wash Services", style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 26, fontWeight: FontWeight.bold)) ,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(bottom: 100),
+        child: Image.network(
+          "https://static.vecteezy.com/system/resources/previews/000/549/723/non_2x/abstract-blue-background-dark-curve-002-vector.jpg",
+          width: double.infinity,
+          height: coverHeight,
+          fit: BoxFit.cover,
+        ),
       ),
     ],
   );
 
   Widget buildCoverIcon() => Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
-      SizedBox(height: 15,),
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      const SizedBox(height: 15,),
       Padding(
-        padding: EdgeInsets.only(top: 235),
-        child: Text('About our services:', style:TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 50, 137))),
+        padding: const EdgeInsets.only(top: 235),
+        child: Text('About our services:', style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 20, fontWeight: FontWeight.bold)),
       ),
     ],
   );
@@ -98,7 +109,7 @@ class _HomeView extends State<HomeView>{
   Widget buildProfileImage() => CircleAvatar(
     radius: profileHeight /2,
     backgroundColor: Colors.grey.shade800,
-    backgroundImage: const NetworkImage('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/car-wash-logo-design-template-13417cc52f34454a1e8aa46d5bc0aa38_screen.jpg?ts=1645593211'),
+    backgroundImage: const NetworkImage('https://img.freepik.com/free-vector/auto-detailing-car-wash-logo-design_160069-100.jpg?w=2000'),
   );
   
   

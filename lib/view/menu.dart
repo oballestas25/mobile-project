@@ -31,10 +31,6 @@ class MenuS extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        appBar: AppBar(
-        title: const Text("Car Wash"),
-        backgroundColor: Colors.cyan,
-      ),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex),),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
