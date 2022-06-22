@@ -17,7 +17,7 @@ class MenuS extends State<Menu> {
   int _selectedIndex=0;
   static const TextStyle optionStyle = TextStyle(fontSize: 24,fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    const HomeView(),
+    HomeView(),
     const ListFireBase(),
     Profiles(),
   ];
@@ -31,10 +31,6 @@ class MenuS extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        appBar: AppBar(
-        title: const Text("Car Wash"),
-        backgroundColor: Colors.cyan,
-      ),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex),),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
