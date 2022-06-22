@@ -42,7 +42,7 @@ class _HomeView extends State<HomeView>{
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 410, right: 200),
-                child: Text("Tapiceria", style: TextStyle(fontSize: 10), ),
+                child: Text("Tapicería", style: TextStyle(fontSize: 14), ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 350, right: 20),
@@ -51,7 +51,7 @@ class _HomeView extends State<HomeView>{
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 410, right: 20),
-                child: Text("Lavado", style: TextStyle(fontSize: 10), ),
+                child: Text("Lavado", style: TextStyle(fontSize: 14), ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 350, left: 200),
@@ -60,11 +60,11 @@ class _HomeView extends State<HomeView>{
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 410, left: 200),
-                child: Text("Polish", style: TextStyle(fontSize: 10), ),
+                child: Text("Polish", style: TextStyle(fontSize: 14), ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 500, right: 20),
-                child: Text("No dudes en contactarnos!", style: TextStyle(fontSize: 10), ),
+                child: Text("No dudes en contactarnos!", style: TextStyle(fontSize: 16), ),
               ),
             ],
             
@@ -78,7 +78,7 @@ class _HomeView extends State<HomeView>{
     children: [
       Padding (
         padding: const EdgeInsets.only(bottom:100),
-        child:Text("Welcome to the Car Wash Services", style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 26, fontWeight: FontWeight.bold)) ,
+        child:Text("Bienvenido a los servicios de lavado de autos", style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 21, fontWeight: FontWeight.bold)) ,
       ),
       Padding(
         padding: const EdgeInsets.only(bottom: 100),
@@ -99,7 +99,7 @@ class _HomeView extends State<HomeView>{
       const SizedBox(height: 15,),
       Padding(
         padding: const EdgeInsets.only(top: 235),
-        child: Text('About our services:', style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 20, fontWeight: FontWeight.bold)),
+        child: Text('Nuestros servicios:', style:GoogleFonts.lato(fontStyle: FontStyle.italic, fontSize: 22, fontWeight: FontWeight.bold)),
       ),
     ],
   );
