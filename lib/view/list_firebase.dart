@@ -55,7 +55,7 @@ class _ListFireBaseState extends State<ListFireBase> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DetailView(registros[index])),
+                      MaterialPageRoute(builder: (context) => DetailView(registros[index].id.toString())),
                     );
                   },
                   child: Stack(

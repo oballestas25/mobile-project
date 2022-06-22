@@ -1,31 +1,57 @@
 import 'package:flutter/material.dart';
+import '../domain/firebase_connection_detail.dart';
 
-class DetailView extends StatelessWidget {
-  final register;
-  const DetailView(this.register,{Key? key}) : super(key: key);
+
+class DetailView extends StatefulWidget {
+  String index;
+  DetailView(this.index,{Key? key}) : super(key: key);
+  @override
+  State<DetailView> createState() => _DetailViewState();
+}
+
+class _DetailViewState extends State<DetailView> {
+  Map<String, dynamic> registros = {};
+  final connection = FirebaseConnectionDetail();
+  
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    callDatabase();
+    if (registros.isNotEmpty){
+          return  Scaffold(
       
       body: Center(
         child: Column(children: [
-        Image(image: Image.network(register.image!).image),
+        Image(image: Image.network(registros['image']).image),
         const Text("\nUsuario", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Nombre: ${register.nombre} ${register.apellido}"),
-        Text("Celular: ${register.cel}"),
-        Text("Licencia: ${register.licencia}"),
+        Text("Nombre: ${registros["nombre"]} ${registros["apellido"]}"),
+        Text("Celular: ${registros["cel"]}"),
+        Text("Licencia: ${registros["licencia"]}"),
         const Text("\nCarro", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Marca: ${register.carro?.marca}"),
-        Text("Modelo: ${register.carro?.modelo}"),
-        Text("Color: ${register.carro?.color}"),
-        Text("Placa: ${register.carro?.placa}"),
+        Text("Marca: ${registros["Carro"]["marca"]}"),
+        Text("Modelo: ${registros["Carro"]["modelo"]}"),
+         Text("Color: ${registros["Carro"]["Color"]}"),
+        Text("Placa: ${registros["Carro"]["placa"]}"),
         const Text("\nServicios", style: TextStyle(fontWeight: FontWeight.bold)),
-        Text("Lavado: ${register.servicio?.lavado}"),
-        Text("Pulido: ${register.servicio?.polish}"),
-        Text("Tapicería: ${register.servicio?.tapiceria}"),
-        ]),
+        Text("Lavado: ${registros["Servicio"]["lavado"]}"),
+        Text("Pulido: ${registros["Servicio"]["polish"]}"),
+        Text("Tapicería: ${registros["Servicio"]["tapiceria"]}"),
+        ]),  
      
     ));
+
+    }else{
+        return  const Scaffold(
+              
+              body: Center(child: Text("Loading...")));
+    }
+
+  }
+
+  void callDatabase() async {
+    final respuesta = await connection.getDetailRegister(widget.index);
+    setState(() {
+      registros = respuesta;
+    });
   }
 }
