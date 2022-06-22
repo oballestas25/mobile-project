@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_project/view/home_view.dart';
-import 'package:mobile_project/view/porfile.dart';
+import 'package:mobile_project/view/profile.dart';
+import 'package:mobile_project/view/profiles.dart';
 import 'list_firebase.dart';
 
 
@@ -15,11 +16,10 @@ class MenuS extends State<Menu> {
 
   int _selectedIndex=0;
   static const TextStyle optionStyle = TextStyle(fontSize: 24,fontWeight: FontWeight.bold);
-
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeView(),
     const ListFireBase(),
-    const Profile(),
+    Profiles(),
   ];
 
   void _onItemTapped (int index){
@@ -44,11 +44,11 @@ class MenuS extends State<Menu> {
           ),
           BottomNavigationBarItem (
             icon: Icon(Icons.car_repair),
-            label: "Servicios"
+            label: "Services"
           ),
           BottomNavigationBarItem (
             icon: Icon(Icons.person),
-            label: "Profile"
+            label: "Profiles"
           ),
         ],
         currentIndex: _selectedIndex,

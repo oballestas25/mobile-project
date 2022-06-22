@@ -29,7 +29,7 @@ class CardCustom extends StatelessWidget{
       ),
     );
   } 
-  }
+}
 
 class ListFireBase extends StatefulWidget {
   const ListFireBase({Key? key}) : super(key: key);
