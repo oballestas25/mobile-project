@@ -51,7 +51,6 @@ class _ListFireBaseState extends State<ListFireBase> {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (_, index) {
             return ListTile(
-
               title: GestureDetector(
                   onTap: () {
                     Navigator.push(
